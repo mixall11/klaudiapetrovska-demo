@@ -349,39 +349,93 @@
     .foot-grid { grid-template-columns: 1fr 1fr; }
   }
 
-  /* ---------- subtle motion ---------- */
+  /* ---------- motion ---------- */
   @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50%      { transform: translateY(-14px); }
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    33%      { transform: translateY(-26px) rotate(-2deg); }
+    66%      { transform: translateY(-12px) rotate(2deg); }
   }
   @keyframes morph {
-    0%, 100% { border-radius: 220px 220px 24px 24px; }
-    33%      { border-radius: 200px 240px 40px 16px; }
-    66%      { border-radius: 240px 200px 28px 36px; }
+    0%, 100% { border-radius: 60% 40% 50% 50% / 55% 65% 35% 45%; }
+    25%      { border-radius: 40% 60% 65% 35% / 45% 35% 65% 55%; }
+    50%      { border-radius: 50% 50% 35% 65% / 65% 55% 45% 35%; }
+    75%      { border-radius: 55% 45% 55% 45% / 35% 65% 35% 65%; }
   }
   @keyframes breathe {
-    0%, 100% { box-shadow: 0 6px 18px rgba(209,122,149,0.28), 0 0 0 0 rgba(209,122,149,0.18); }
-    50%      { box-shadow: 0 10px 24px rgba(209,122,149,0.34), 0 0 0 10px rgba(209,122,149,0.0); }
+    0%, 100% { box-shadow: 0 6px 18px rgba(209,122,149,0.32), 0 0 0 0 rgba(209,122,149,0.5); }
+    50%      { box-shadow: 0 14px 30px rgba(209,122,149,0.42), 0 0 0 18px rgba(209,122,149,0.0); }
   }
   @keyframes shimmer {
     0%   { background-position: -200% 0; }
     100% { background-position: 200% 0; }
   }
+  @keyframes petal-fall {
+    0%   { transform: translate3d(0, -10vh, 0) rotate(0deg); opacity: 0; }
+    10%  { opacity: 0.65; }
+    90%  { opacity: 0.65; }
+    100% { transform: translate3d(var(--drift, 40px), 110vh, 0) rotate(360deg); opacity: 0; }
+  }
+  @keyframes glow-pulse {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50%      { opacity: 0.7; transform: scale(1.15); }
+  }
 
+  /* Hero visual — bigger amplitude + organic morph */
   .hero-visual {
-    animation: float 9s ease-in-out infinite, morph 14s ease-in-out infinite;
+    border-radius: 60% 40% 50% 50% / 55% 65% 35% 45% !important;
+    animation: float 7s ease-in-out infinite, morph 10s ease-in-out infinite;
+    box-shadow: 0 20px 60px rgba(180,90,110,0.30) !important;
+    background: linear-gradient(135deg, var(--sage) 0%, var(--terracotta) 50%, var(--sage-dark) 100%) !important;
   }
+  .hero-visual::after {
+    border-radius: inherit !important;
+    animation: glow-pulse 4s ease-in-out infinite;
+  }
+
+  /* Hero CTA — visible breathing pulse */
   .hero .btn:not(.btn-ghost) {
-    animation: breathe 4s ease-in-out infinite;
+    animation: breathe 2.8s ease-in-out infinite;
   }
+
+  /* "relax" word shimmer */
   .hero h1 em {
-    background: linear-gradient(110deg, var(--sage-dark) 0%, var(--terracotta) 40%, var(--sage-dark) 60%, var(--terracotta) 100%);
+    background: linear-gradient(110deg, var(--sage-dark) 0%, var(--terracotta) 30%, #F2BCA5 50%, var(--sage-dark) 70%, var(--terracotta) 100%);
     background-size: 200% auto;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: shimmer 8s linear infinite;
+    animation: shimmer 5s linear infinite;
   }
+
+  /* Floating petals in hero */
+  .hero { position: relative; overflow: hidden; }
+  .petals {
+    position: absolute; inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .petal {
+    position: absolute;
+    top: -10vh;
+    width: 14px;
+    height: 14px;
+    background: radial-gradient(circle at 30% 30%, var(--sage) 0%, var(--sage-dark) 80%);
+    border-radius: 50% 0 50% 50%;
+    opacity: 0;
+    animation: petal-fall 14s linear infinite;
+    filter: blur(0.3px);
+  }
+  .petal:nth-child(1)  { left:  8%; width: 12px; height: 12px; animation-delay: 0s;    --drift:  30px; }
+  .petal:nth-child(2)  { left: 22%; width: 16px; height: 16px; animation-delay: -3s;   --drift: -50px; background: radial-gradient(circle at 30% 30%, var(--terracotta) 0%, #C97070 80%); }
+  .petal:nth-child(3)  { left: 38%; width: 10px; height: 10px; animation-delay: -6s;   --drift:  20px; }
+  .petal:nth-child(4)  { left: 54%; width: 18px; height: 18px; animation-delay: -9s;   --drift: -40px; background: radial-gradient(circle at 30% 30%, #F2BCA5 0%, var(--sage-dark) 80%); }
+  .petal:nth-child(5)  { left: 70%; width: 13px; height: 13px; animation-delay: -1.5s; --drift:  60px; }
+  .petal:nth-child(6)  { left: 86%; width: 11px; height: 11px; animation-delay: -4.5s; --drift: -25px; background: radial-gradient(circle at 30% 30%, var(--terracotta) 0%, var(--sage-dark) 80%); }
+  .petal:nth-child(7)  { left: 15%; width: 9px;  height: 9px;  animation-delay: -7.5s; --drift:  40px; }
+  .petal:nth-child(8)  { left: 62%; width: 15px; height: 15px; animation-delay: -10.5s; --drift: -35px; }
+  .petal:nth-child(9)  { left: 45%; width: 8px;  height: 8px;  animation-delay: -12s;  --drift:  50px; background: radial-gradient(circle at 30% 30%, #F2BCA5 0%, #C97070 80%); }
+
+  .hero .container { position: relative; z-index: 1; }
 
   /* scroll reveal */
   .reveal {
@@ -405,7 +459,8 @@
   .price-card:hover { box-shadow: 0 14px 36px rgba(180,90,110,0.14); }
 
   @media (prefers-reduced-motion: reduce) {
-    .hero-visual, .hero .btn, .hero h1 em { animation: none !important; }
+    .hero-visual, .hero .btn, .hero h1 em, .petal, .hero-visual::after { animation: none !important; }
+    .petals { display: none; }
     .hero h1 em { -webkit-text-fill-color: var(--sage-dark); color: var(--sage-dark); background: none; }
     .reveal { opacity: 1; transform: none; transition: none; }
   }
@@ -427,6 +482,17 @@
 </nav>
 
 <header class="hero">
+  <div class="petals" aria-hidden="true">
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+  </div>
   <div class="container">
     <div class="hero-grid">
       <div>
