@@ -426,6 +426,19 @@
   .flower-decor.xl  { width: 130px; height: 130px; }
   .flower-decor.xxl { width: 180px; height: 180px; }
 
+  /* Mobile: znížiť hustotu kvetov + zmenšiť ich, aby na úzkej obrazovke nevznikal cluster */
+  @media (max-width: 820px) {
+    .flower-decor.xxl,
+    .flower-decor.xl,
+    .flower-decor.lg { display: none; }
+    .flower-decor.md { width: 44px; height: 44px; }
+    .flower-decor.sm { width: 30px; height: 30px; }
+    .flower-decor.xs { width: 20px; height: 20px; }
+    /* skryť každý druhý zostávajúci kvet — zostane len cca 4 per sekcia */
+    .hero > svg.flower-decor:nth-of-type(2n),
+    section > svg.flower-decor:nth-of-type(2n) { display: none; }
+  }
+
   @keyframes flower-spin-slow {
     from { transform: rotate(var(--r, 0deg)); }
     to   { transform: rotate(calc(var(--r, 0deg) + 360deg)); }
