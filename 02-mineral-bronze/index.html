@@ -1,0 +1,692 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Klaudia Petrovská — Access Bars · Pauza pre preťaženú hlavu</title>
+<meta name="description" content="Access Bars® · 32 bodov na hlave, 90 minút pokoja. Premium relaxačné sedenia s Klaudiou Petrovskou.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #15130F;
+    --bg-alt: #1E1B16;
+    --surface: #252118;
+    --line: #322D24;
+    --ink: #F2EDE2;
+    --ink-muted: #9A9080;
+    --bronze: #C99362;
+    --bronze-soft: #E0AE7E;
+    --shadow: 0 8px 32px rgba(0,0,0,0.4);
+    --radius: 4px;
+    --maxw: 1200px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Manrope', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400;
+  }
+  h1, h2, h3, h4 {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 300;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    margin: 0 0 0.5em;
+    color: var(--ink);
+  }
+  h1 { font-size: clamp(2.6rem, 6vw, 4.6rem); }
+  h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
+  h3 { font-size: 1.3rem; font-weight: 500; }
+  p { margin: 0 0 1em; }
+  a { color: var(--bronze-soft); text-decoration: none; }
+  a:hover { color: var(--bronze); }
+  .container { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
+  .muted { color: var(--ink-muted); }
+  .eyebrow {
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    letter-spacing: 0.26em;
+    color: var(--bronze);
+    font-weight: 600;
+    margin-bottom: 1.6em;
+    display: inline-block;
+    padding-left: 32px;
+    position: relative;
+  }
+  .eyebrow::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 50%;
+    width: 22px; height: 1px;
+    background: var(--bronze);
+  }
+
+  /* Nav */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(21,19,15,0.85);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .container {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 22px; padding-bottom: 22px;
+  }
+  .brand {
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .brand span { color: var(--bronze); margin: 0 6px; }
+  nav ul {
+    display: flex; gap: 36px; list-style: none; margin: 0; padding: 0;
+  }
+  nav ul a {
+    color: var(--ink-muted);
+    font-size: 0.88rem;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  nav ul a:hover { color: var(--ink); }
+  .btn {
+    display: inline-block;
+    padding: 14px 28px;
+    background: var(--bronze);
+    color: var(--bg);
+    font-size: 0.84rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    border-radius: 2px;
+    border: 1px solid var(--bronze);
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .btn:hover { background: var(--bronze-soft); border-color: var(--bronze-soft); color: var(--bg); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border-color: var(--line);
+  }
+  .btn-ghost:hover { background: var(--surface); color: var(--bronze); border-color: var(--bronze); }
+  @media (max-width: 820px) { nav ul { display: none; } }
+
+  /* Hero */
+  .hero {
+    padding: 120px 0 140px;
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 80% 30%, rgba(201,147,98,0.12) 0%, transparent 50%),
+      radial-gradient(circle at 20% 80%, rgba(201,147,98,0.06) 0%, transparent 40%),
+      var(--bg);
+  }
+  .hero h1 {
+    max-width: 18ch;
+    margin-bottom: 0.4em;
+  }
+  .hero h1 .accent {
+    color: var(--bronze);
+    font-style: italic;
+    font-weight: 300;
+  }
+  .hero .lede {
+    font-size: 1.2rem;
+    color: var(--ink-muted);
+    max-width: 56ch;
+    margin-bottom: 2.4em;
+    font-weight: 300;
+  }
+  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+  .hero-meta {
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    padding-top: 40px;
+    border-top: 1px solid var(--line);
+  }
+  .hero-meta div span {
+    display: block;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 8px;
+  }
+  .hero-meta div strong {
+    font-size: 1.5rem;
+    color: var(--ink);
+    font-weight: 300;
+  }
+  @media (max-width: 820px) {
+    .hero { padding: 70px 0 80px; }
+    .hero-meta { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* Section base */
+  section { padding: 110px 0; }
+  section.alt { background: var(--bg-alt); }
+  .section-head { max-width: 760px; margin-bottom: 72px; }
+
+  /* 3 dôvody */
+  .reasons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+  }
+  .reason {
+    padding: 48px 36px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    transition: background .2s;
+  }
+  .reason:hover { background: var(--surface); }
+  .reason .num {
+    font-size: 0.72rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    display: block;
+    margin-bottom: 28px;
+    font-weight: 600;
+  }
+  .reason h3 { margin-bottom: 14px; }
+  .reason p { color: var(--ink-muted); margin: 0; }
+  @media (max-width: 820px) { .reasons { grid-template-columns: 1fr; } }
+
+  /* AB sekcia */
+  .ab-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .ab-visual {
+    aspect-ratio: 1/1;
+    background:
+      radial-gradient(circle at 50% 50%, rgba(201,147,98,0.3) 0%, transparent 65%),
+      var(--surface);
+    border-radius: 50%;
+    position: relative;
+    border: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .ab-visual::before,
+  .ab-visual::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(201,147,98,0.22);
+  }
+  .ab-visual::before { inset: 12%; }
+  .ab-visual::after { inset: 28%; border-color: rgba(201,147,98,0.4); }
+  .ab-dots {
+    position: absolute; inset: 0;
+  }
+  .ab-dots span {
+    position: absolute;
+    width: 6px; height: 6px;
+    background: var(--bronze);
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(201,147,98,0.6);
+  }
+  .ab-list { margin: 0; padding: 0; list-style: none; }
+  .ab-list li {
+    padding: 28px 0;
+    border-bottom: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 24px;
+  }
+  .ab-list li:first-child { padding-top: 0; }
+  .ab-list li:last-child { border-bottom: none; }
+  .ab-list .num {
+    color: var(--bronze);
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+  }
+  .ab-list strong {
+    display: block;
+    color: var(--ink);
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .ab-list p { margin: 0; color: var(--ink-muted); font-size: 0.95rem; }
+  @media (max-width: 820px) {
+    .ab-grid { grid-template-columns: 1fr; gap: 40px; }
+    .ab-visual { max-width: 320px; margin: 0 auto; }
+  }
+
+  /* Cenník */
+  .pricing {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .price-card {
+    background: var(--bg);
+    padding: 48px 36px;
+    transition: background .2s;
+  }
+  .price-card:hover { background: var(--bg-alt); }
+  .price-card.featured {
+    background: var(--surface);
+    position: relative;
+  }
+  .price-card.featured::before {
+    content: 'Najobľúbenejšie';
+    position: absolute;
+    top: 24px; right: 24px;
+    font-size: 0.66rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    padding: 6px 12px;
+    border: 1px solid var(--bronze);
+    border-radius: 2px;
+  }
+  .price-card h3 {
+    color: var(--ink);
+    font-weight: 400;
+    margin-bottom: 4px;
+  }
+  .price-card .duration {
+    color: var(--ink-muted);
+    font-size: 0.84rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+  .price-card .price {
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--bronze);
+    line-height: 1;
+    margin-bottom: 28px;
+  }
+  .price-card .price small {
+    font-size: 1rem;
+    color: var(--ink-muted);
+    margin-left: 6px;
+  }
+  .price-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px;
+    color: var(--ink-muted);
+    font-size: 0.94rem;
+  }
+  .price-card ul li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .price-card ul li:last-child { border-bottom: none; }
+  @media (max-width: 820px) { .pricing { grid-template-columns: 1fr; } }
+
+  /* Blog */
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .blog-card {
+    background: var(--bg-alt);
+    padding: 40px 32px;
+    transition: background .2s;
+    cursor: pointer;
+  }
+  .blog-card:hover { background: var(--surface); }
+  .blog-card .meta {
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 20px;
+  }
+  .blog-card h3 {
+    color: var(--ink);
+    font-weight: 400;
+    margin-bottom: 14px;
+    line-height: 1.25;
+  }
+  .blog-card p {
+    color: var(--ink-muted);
+    margin: 0;
+    font-size: 0.96rem;
+  }
+  .blog-card .arrow {
+    margin-top: 24px;
+    color: var(--bronze);
+    font-size: 1.2rem;
+  }
+  @media (max-width: 820px) { .blog-grid { grid-template-columns: 1fr; } }
+
+  /* CTA */
+  .cta-banner {
+    background: linear-gradient(135deg, var(--surface) 0%, var(--bg-alt) 100%);
+    border: 1px solid var(--line);
+    padding: 80px 64px;
+    text-align: left;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .cta-banner h2 { margin-bottom: 0.5em; }
+  .cta-banner p { color: var(--ink-muted); margin: 0; max-width: 48ch; }
+  .cta-actions { display: flex; flex-direction: column; gap: 16px; }
+  .cta-meta {
+    margin-top: 12px;
+    font-size: 0.84rem;
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+  }
+  @media (max-width: 820px) {
+    .cta-banner { grid-template-columns: 1fr; padding: 50px 32px; gap: 32px; }
+  }
+
+  /* Footer */
+  footer {
+    padding: 80px 0 32px;
+    background: var(--bg);
+    border-top: 1px solid var(--line);
+    color: var(--ink-muted);
+    font-size: 0.9rem;
+  }
+  .foot-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--line);
+  }
+  footer h4 {
+    color: var(--ink);
+    margin: 0 0 18px;
+    font-size: 0.84rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  footer ul { list-style: none; padding: 0; margin: 0; }
+  footer ul li { padding: 6px 0; }
+  footer ul a { color: var(--ink-muted); }
+  footer ul a:hover { color: var(--bronze); }
+  .copy {
+    padding-top: 28px;
+    display: flex; justify-content: space-between;
+    flex-wrap: wrap; gap: 14px;
+    font-size: 0.82rem;
+  }
+  @media (max-width: 820px) {
+    .foot-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="/" class="brand">Klaudia <span>·</span> Petrovská</a>
+    <ul>
+      <li><a href="#access-bars">Access Bars</a></li>
+      <li><a href="#cennik">Cenník</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#kontakt">O mne</a></li>
+    </ul>
+    <a href="#kontakt" class="btn">Objednať</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <span class="eyebrow">Access Bars · 32 bodov · 90 minút</span>
+    <h1>Tvoja hlava si zaslúži <span class="accent">pauzu,</span> ktorá netrvá víkend.</h1>
+    <p class="lede">Access Bars® je technika, kde sa jemne dotýkam 32 bodov na tvojej hlave. Nikto nehovorí. Nikto necvičí. 60 až 90 minút, počas ktorých sa tvoja preťažená myseľ konečne stíši.</p>
+    <div class="hero-ctas">
+      <a href="#kontakt" class="btn">Rezervovať termín</a>
+      <a href="#access-bars" class="btn btn-ghost">Ako sedenie prebieha</a>
+    </div>
+    <div class="hero-meta">
+      <div><span>Trvanie</span><strong>60–120 min</strong></div>
+      <div><span>Sedenie od</span><strong>45 €</strong></div>
+      <div><span>Forma</span><strong>Ležanie, ticho</strong></div>
+      <div><span>Certifikácia</span><strong>Bars Facilitator</strong></div>
+    </div>
+  </div>
+</header>
+
+<section class="alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Prečo to ľudia skúšajú</span>
+      <h2>Pre tých, čo skúšali jogu aj meditáciu — a vzdali to.</h2>
+    </div>
+    <div class="reasons">
+      <article class="reason">
+        <span class="num">01 · Pasivita</span>
+        <h3>Nemusíš robiť nič</h3>
+        <p>Žiadne dýchanie podľa návodu, žiadne pozícia, žiadny rozhovor. Ľahneš si — a to je všetko, čo od teba potrebujem.</p>
+      </article>
+      <article class="reason">
+        <span class="num">02 · Účinok</span>
+        <h3>Hlava sa stíši</h3>
+        <p>Klienti popisujú stav, ako keď niekto stlmí zvuk v hlave. Lepší spánok ešte 2–3 noci po sedení nie je výnimka.</p>
+      </article>
+      <article class="reason">
+        <span class="num">03 · Sekulárne</span>
+        <h3>Bez ezo žargónu</h3>
+        <p>Žiadne čakry, žiadne vibrácie. Konkrétna technika, konkrétne body, konkrétny čas. To stačí.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="access-bars">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Čo je Access Bars</span>
+      <h2>32 bodov na hlave, ku ktorým sa zľahka priblížim prstami.</h2>
+    </div>
+    <div class="ab-grid">
+      <div class="ab-visual" aria-hidden="true">
+        <div class="ab-dots">
+          <span style="top:18%;left:30%"></span>
+          <span style="top:22%;left:62%"></span>
+          <span style="top:38%;left:18%"></span>
+          <span style="top:42%;left:78%"></span>
+          <span style="top:58%;left:22%"></span>
+          <span style="top:62%;left:72%"></span>
+          <span style="top:78%;left:38%"></span>
+          <span style="top:80%;left:58%"></span>
+          <span style="top:50%;left:48%"></span>
+        </div>
+      </div>
+      <ol class="ab-list" start="1">
+        <li>
+          <div class="num">01 / 04</div>
+          <div>
+            <strong>Príchod a krátky rozhovor</strong>
+            <p>5–10 minút. Pýtam sa, ako sa cítiš, či ťa niečo bolí, či máš obavy. Nemusíš mať „téma na riešenie".</p>
+          </div>
+        </li>
+        <li>
+          <div class="num">02 / 04</div>
+          <div>
+            <strong>Ľahneš si, oblečená/ý</strong>
+            <p>Na lehátku, pod dekou, v polotme. Topánky dole, šperky von, telefón mimo dosah. Zvyšok prichádza sám.</p>
+          </div>
+        </li>
+        <li>
+          <div class="num">03 / 04</div>
+          <div>
+            <strong>32 bodov, jemný dotyk</strong>
+            <p>Postupne sa zľahka dotýkam 32 konkrétnych bodov na tvojej hlave. Žiadny tlak. Mnohí ľudia v tejto fáze zaspia. Aj to je v poriadku.</p>
+          </div>
+        </li>
+        <li>
+          <div class="num">04 / 04</div>
+          <div>
+            <strong>Pomalý návrat</strong>
+            <p>Posledných 5–10 minút sa neponáhľame. Voda, prípadne čaj. Ak chceš zdieľať, počúvam. Ak chceš ticho, je tam ticho.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+    <p class="muted" style="margin-top:48px;max-width:60ch;"><small>Access Bars® je relaxačná wellness technika. Nenahrádza lekársku ani psychologickú starostlivosť. V prípade diagnózy sa najprv poraď so svojím lekárom.</small></p>
+  </div>
+</section>
+
+<section id="cennik" class="alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Cenník</span>
+      <h2>Tri formáty. Vyber si ten, ktorý sedí tvojmu týždňu.</h2>
+    </div>
+    <div class="pricing">
+      <div class="price-card">
+        <h3>Vyskúšanie</h3>
+        <div class="duration">60 minút · prvé sedenie</div>
+        <div class="price">45<small>€</small></div>
+        <ul>
+          <li>Krátky rozhovor</li>
+          <li>32 bodov, jemný dotyk</li>
+          <li>Voda alebo čaj</li>
+          <li>Pre nových klientov</li>
+        </ul>
+        <a href="#kontakt" class="btn btn-ghost">Objednať</a>
+      </div>
+      <div class="price-card featured">
+        <h3>Klasické sedenie</h3>
+        <div class="duration">90 minút · najobľúbenejšie</div>
+        <div class="price">65<small>€</small></div>
+        <ul>
+          <li>Hlbšie uvoľnenie</li>
+          <li>Pomalší vstup do tela</li>
+          <li>Čas na pomalý návrat</li>
+          <li>Pre stálych klientov</li>
+        </ul>
+        <a href="#kontakt" class="btn">Objednať</a>
+      </div>
+      <div class="price-card">
+        <h3>Reset balíček</h3>
+        <div class="duration">5× 60 min · 6 mesiacov</div>
+        <div class="price">195<small>€</small></div>
+        <ul>
+          <li>5 sedení v balíčku</li>
+          <li>Úspora 30 €</li>
+          <li>Možnosť rozdelenia v čase</li>
+          <li>Pre pravidelný rytmus</li>
+        </ul>
+        <a href="#kontakt" class="btn btn-ghost">Objednať</a>
+      </div>
+    </div>
+    <p class="muted" style="margin-top:40px;font-size:0.92rem;">Platba v hotovosti pri sedení alebo prevodom vopred. Storno bezplatne 24 h pred termínom.</p>
+  </div>
+</section>
+
+<section id="blog">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Z blogu</span>
+      <h2>Pre tých, ktorí potrebujú najprv rozumieť.</h2>
+    </div>
+    <div class="blog-grid">
+      <article class="blog-card">
+        <div class="meta">Čo to je · 5 min</div>
+        <h3>Čo sa deje pri sedení Access Bars — krok za krokom</h3>
+        <p>Od príchodu po pohár vody. Konkrétny popis bez frází pre tých, ktorí potrebujú vedieť, na čom kúpia.</p>
+        <div class="arrow">→</div>
+      </article>
+      <article class="blog-card">
+        <div class="meta">Spánok · 7 min</div>
+        <h3>Prečo večer nevieš vypnúť hlavu (a čo s tým)</h3>
+        <p>Stres, scroll, kortizol o 23:00. Tri techniky, ktoré nevyžadujú silu vôle ani aplikáciu.</p>
+        <div class="arrow">→</div>
+      </article>
+      <article class="blog-card">
+        <div class="meta">Porovnanie · 6 min</div>
+        <h3>Access Bars vs. klasická masáž — kedy si vybrať čo</h3>
+        <p>Telo bolí, alebo hlava nevypína? Tabuľka pre tých, ktorí váhajú medzi dvoma službami.</p>
+        <div class="arrow">→</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="kontakt" class="alt">
+  <div class="container">
+    <div class="cta-banner">
+      <div>
+        <span class="eyebrow">Začneme jednoducho</span>
+        <h2>Najťažší krok je rezervácia. Zvyšok je už len ležanie.</h2>
+        <p>Napíš mi alebo zavolaj. Dohodneme termín, ktorý sedí tebe — väčšinou do týždňa. Žiadne otravné follow-up emaily.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="tel:+421900000000" class="btn">+421 900 000 000</a>
+        <a href="mailto:info@klaudiapetrovska.sk" class="btn btn-ghost">info@klaudiapetrovska.sk</a>
+        <span class="cta-meta">Po–Pia 9:00–19:00 · So 9:00–14:00</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <h4>Klaudia Petrovská</h4>
+        <p class="muted">Certifikovaná Bars Facilitator. Sedenia v pokojnom priestore, kde sa konečne môžeš na chvíľu vypnúť.</p>
+      </div>
+      <div>
+        <h4>Web</h4>
+        <ul>
+          <li><a href="#access-bars">Access Bars</a></li>
+          <li><a href="#cennik">Cenník</a></li>
+          <li><a href="#blog">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="tel:+421900000000">+421 900 000 000</a></li>
+          <li><a href="mailto:info@klaudiapetrovska.sk">info@klaudiapetrovska.sk</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Právne</h4>
+        <ul>
+          <li><a href="/gdpr">GDPR</a></li>
+          <li><a href="/podmienky">Podmienky</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy">
+      <span>© 2026 Klaudia Petrovská</span>
+      <span>Access Bars® je registrovaná značka Access Consciousness LLC.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

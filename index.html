@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Klaudia Petrovská — Dizajn varianty</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+    background: #1a1a1a;
+    color: #f0f0f0;
+    padding: 60px 30px;
+    line-height: 1.6;
+  }
+  .wrap { max-width: 1200px; margin: 0 auto; }
+  h1 {
+    font-family: Georgia, serif;
+    font-weight: 300;
+    font-size: 2.4rem;
+    margin: 0 0 10px;
+    letter-spacing: -0.02em;
+  }
+  p.lede { color: #aaa; margin: 0 0 40px; max-width: 60ch; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 22px;
+  }
+  .card {
+    background: #252525;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 26px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color .2s, transform .2s;
+    display: block;
+    position: relative;
+  }
+  .card:hover { border-color: #888; transform: translateY(-3px); }
+  .card.featured { border-color: #E07A92; }
+  .card.featured::before {
+    content: 'Aktuálny smer';
+    position: absolute;
+    top: -10px; left: 22px;
+    background: #E07A92;
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 99px;
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .swatch {
+    height: 80px;
+    border-radius: 6px;
+    margin-bottom: 18px;
+    display: flex;
+    overflow: hidden;
+  }
+  .swatch span { flex: 1; }
+  .card h3 { margin: 0 0 6px; font-size: 1.18rem; font-weight: 500; }
+  .card .vibe { color: #888; font-size: 0.88rem; margin: 0 0 12px; }
+  .card .tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 14px; }
+  .tag {
+    font-size: 0.72rem;
+    background: #333;
+    padding: 3px 9px;
+    border-radius: 99px;
+    color: #ccc;
+  }
+  .meta { margin-top: 50px; padding-top: 24px; border-top: 1px solid #333; color: #888; font-size: 0.9rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Klaudia Petrovská — dizajn varianty</h1>
+  <p class="lede">Rovnaký obsah, rôzne nálady. Klikni a otestuj scroll, mobil (DevTools 360px), čitateľnosť, CTA.</p>
+
+  <div class="grid">
+
+    <a class="card featured" href="01-linen-sage/" target="_blank">
+      <div class="swatch">
+        <span style="background:#FFF6F1"></span>
+        <span style="background:#FBE5DC"></span>
+        <span style="background:#EBB4C2"></span>
+        <span style="background:#D17A95"></span>
+        <span style="background:#5D3A4A"></span>
+      </div>
+      <h3>01 · Linen &amp; Rose</h3>
+      <p class="vibe">Editoriálny pokoj s ružovou pastel paletou a deep-rose buttonom.</p>
+      <div class="tags">
+        <span class="tag">Fraunces + Inter</span>
+        <span class="tag">rose / plum</span>
+        <span class="tag">vybraný smer</span>
+      </div>
+    </a>
+
+    <a class="card" href="04-rose-pastel/" target="_blank">
+      <div class="swatch">
+        <span style="background:#FFF5F7"></span>
+        <span style="background:#FFE8EE"></span>
+        <span style="background:#F5A6B8"></span>
+        <span style="background:#E07A92"></span>
+        <span style="background:#E8D5E8"></span>
+      </div>
+      <h3>04 · Rose Pastel</h3>
+      <p class="vibe">Romanticky ženské, Cormorant serif, blob shapes.</p>
+      <div class="tags">
+        <span class="tag">Cormorant + Quicksand</span>
+        <span class="tag">rose / lavender</span>
+      </div>
+    </a>
+
+    <a class="card" href="03-soft-cocoon/" target="_blank">
+      <div class="swatch">
+        <span style="background:#FDF6F0"></span>
+        <span style="background:#F4D8D8"></span>
+        <span style="background:#D89B9B"></span>
+        <span style="background:#E8B89A"></span>
+      </div>
+      <h3>03 · Soft Cocoon</h3>
+      <p class="vibe">Hrejivý kokon, DM Serif, dusty pink + peach.</p>
+      <div class="tags">
+        <span class="tag">DM Serif + Nunito</span>
+        <span class="tag">dusty / peach</span>
+      </div>
+    </a>
+
+    <a class="card" href="02-mineral-bronze/" target="_blank">
+      <div class="swatch">
+        <span style="background:#15130F"></span>
+        <span style="background:#252118"></span>
+        <span style="background:#C99362"></span>
+        <span style="background:#F2EDE2"></span>
+      </div>
+      <h3>02 · Mineral &amp; Bronze</h3>
+      <p class="vibe">Premium dark, Manrope, charcoal + bronze.</p>
+      <div class="tags">
+        <span class="tag">Manrope</span>
+        <span class="tag">dark / bronze</span>
+      </div>
+    </a>
+
+  </div>
+
+  <p class="meta">
+    Všetky varianty zdieľajú rovnakú IA (hero → 3 dôvody → Access Bars → cenník → blog → CTA → footer).<br>
+    Po finálnom výbere prepíšeme do Astro + Cloudflare Pages.
+  </p>
+</div>
+</body>
+</html>
