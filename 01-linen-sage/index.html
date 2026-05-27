@@ -349,17 +349,10 @@
     .foot-grid { grid-template-columns: 1fr 1fr; }
   }
 
-  /* ---------- motion ---------- */
+  /* ---------- motion (zachováva pôvodný dizajn) ---------- */
   @keyframes float {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    33%      { transform: translateY(-26px) rotate(-2deg); }
-    66%      { transform: translateY(-12px) rotate(2deg); }
-  }
-  @keyframes morph {
-    0%, 100% { border-radius: 60% 40% 50% 50% / 55% 65% 35% 45%; }
-    25%      { border-radius: 40% 60% 65% 35% / 45% 35% 65% 55%; }
-    50%      { border-radius: 50% 50% 35% 65% / 65% 55% 45% 35%; }
-    75%      { border-radius: 55% 45% 55% 45% / 35% 65% 35% 65%; }
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-18px); }
   }
   @keyframes breathe {
     0%, 100% { box-shadow: 0 6px 18px rgba(209,122,149,0.32), 0 0 0 0 rgba(209,122,149,0.5); }
@@ -375,21 +368,10 @@
     90%  { opacity: 0.65; }
     100% { transform: translate3d(var(--drift, 40px), 110vh, 0) rotate(360deg); opacity: 0; }
   }
-  @keyframes glow-pulse {
-    0%, 100% { opacity: 0.4; transform: scale(1); }
-    50%      { opacity: 0.7; transform: scale(1.15); }
-  }
 
-  /* Hero visual — bigger amplitude + organic morph */
+  /* Hero visual — jemne pluje, pôvodný tvar zachovaný */
   .hero-visual {
-    border-radius: 60% 40% 50% 50% / 55% 65% 35% 45% !important;
-    animation: float 7s ease-in-out infinite, morph 10s ease-in-out infinite;
-    box-shadow: 0 20px 60px rgba(180,90,110,0.30) !important;
-    background: linear-gradient(135deg, var(--sage) 0%, var(--terracotta) 50%, var(--sage-dark) 100%) !important;
-  }
-  .hero-visual::after {
-    border-radius: inherit !important;
-    animation: glow-pulse 4s ease-in-out infinite;
+    animation: float 7s ease-in-out infinite;
   }
 
   /* Hero CTA — visible breathing pulse */
