@@ -235,6 +235,20 @@
     transform: translateY(-6px);
   }
   .price-card:hover { transform: translateY(-3px); }
+  .price-card .tier-flower {
+    width: 64px;
+    height: 64px;
+    display: block;
+    margin-bottom: 14px;
+  }
+  .price-card .tier-flower-label {
+    font-size: 0.74rem;
+    color: var(--ink-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: block;
+  }
   .price-card .label {
     font-size: 0.78rem;
     letter-spacing: 0.16em;
@@ -611,6 +625,23 @@
       </g>
       <circle cx="30" cy="30" r="5" fill="#FFFFFF"/>
     </symbol>
+    <!-- Pricing tier daisies: missing petals signal smaller package -->
+    <symbol id="ico-daisy-2" viewBox="0 0 60 60">
+      <g fill="#FFFFFF" stroke="#EBB4C2" stroke-width="1">
+        <ellipse cx="30" cy="14" rx="5" ry="11"/>
+        <ellipse cx="46" cy="30" rx="11" ry="5"/>
+      </g>
+      <circle cx="30" cy="30" r="6" fill="#D17A95"/>
+    </symbol>
+    <symbol id="ico-daisy-4" viewBox="0 0 60 60">
+      <g fill="#FFFFFF" stroke="#EBB4C2" stroke-width="1">
+        <ellipse cx="30" cy="14" rx="5" ry="11"/>
+        <ellipse cx="46" cy="30" rx="11" ry="5"/>
+        <ellipse cx="30" cy="46" rx="5" ry="11"/>
+        <ellipse cx="14" cy="30" rx="11" ry="5"/>
+      </g>
+      <circle cx="30" cy="30" r="6" fill="#D17A95"/>
+    </symbol>
   </defs>
 </svg>
 
@@ -750,6 +781,7 @@
     </div>
     <div class="pricing">
       <div class="price-card">
+        <svg class="tier-flower" viewBox="0 0 60 60" aria-hidden="true"><use href="#ico-daisy-2"/></svg>
         <div class="label">Prvé sedenie</div>
         <h3>Vyskúšanie</h3>
         <div class="price">45 €<span></span></div>
@@ -763,6 +795,7 @@
         <a href="#kontakt" class="btn btn-ghost">Objednať</a>
       </div>
       <div class="price-card featured">
+        <svg class="tier-flower" viewBox="0 0 60 60" aria-hidden="true"><use href="#ico-daisy-4"/></svg>
         <div class="label">Najobľúbenejšie</div>
         <h3>Klasické sedenie</h3>
         <div class="price">65 €<span></span></div>
@@ -776,6 +809,7 @@
         <a href="#kontakt" class="btn">Objednať</a>
       </div>
       <div class="price-card">
+        <svg class="tier-flower" viewBox="0 0 60 60" aria-hidden="true"><use href="#ico-daisy"/></svg>
         <div class="label">Reset balíček</div>
         <h3>Pravidelný rytmus</h3>
         <div class="price">195 €<span></span></div>
