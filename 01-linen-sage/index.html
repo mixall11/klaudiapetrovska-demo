@@ -349,11 +349,96 @@
     .foot-grid { grid-template-columns: 1fr 1fr; }
   }
 
-  /* ---------- motion (zachováva pôvodný dizajn) ---------- */
+  /* ---------- visible always (no motion needed) ---------- */
+
+  /* Scroll progress bar — visible aj bez JS animations */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    width: var(--scroll, 0%);
+    background: linear-gradient(90deg, var(--sage-dark) 0%, var(--terracotta) 100%);
+    z-index: 100;
+    transition: width .15s ease;
+  }
+
+  /* Decorative SVG flower next to hero visual */
+  .deco-flower {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    pointer-events: none;
+    opacity: 0.85;
+    z-index: 2;
+  }
+  .deco-flower.f1 { top: -30px; right: -20px; }
+  .deco-flower.f2 { bottom: -10px; left: -30px; width: 70px; height: 70px; transform: rotate(35deg); }
+
+  /* Rose glow halo around hero visual (static) */
+  .hero-visual {
+    position: relative;
+    box-shadow:
+      0 20px 60px rgba(180,90,110,0.22),
+      0 0 80px rgba(235,180,194,0.45) !important;
+  }
+  .hero-visual::before {
+    content: '';
+    position: absolute;
+    inset: -30px;
+    border-radius: inherit;
+    background: radial-gradient(circle, rgba(235,180,194,0.35) 0%, transparent 70%);
+    z-index: -1;
+    filter: blur(20px);
+  }
+
+  /* Dots pattern background v "3 dôvody" sekcii */
+  section.alt {
+    background-image:
+      radial-gradient(circle at 12% 20%, rgba(209,122,149,0.06) 0%, transparent 22%),
+      radial-gradient(circle at 88% 80%, rgba(242,188,165,0.08) 0%, transparent 25%);
+  }
+
+  /* Section dividers — decorative ornament */
+  .ornament {
+    text-align: center;
+    margin: 0 auto 24px;
+    color: var(--sage-dark);
+    font-size: 1.4rem;
+    letter-spacing: 0.8em;
+    opacity: 0.55;
+    padding-left: 0.8em;
+  }
+
+  /* Glassmorphism on reason cards */
+  .reason {
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.6);
+  }
+
+  /* ---------- motion (animations) ---------- */
   @keyframes float {
     0%, 100% { transform: translateY(0); }
     50%      { transform: translateY(-18px); }
   }
+  @keyframes flower-rotate {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  @keyframes flower-rotate-rev {
+    0%   { transform: rotate(35deg); }
+    100% { transform: rotate(395deg); }
+  }
+  @keyframes halo-pulse {
+    0%, 100% { opacity: 0.45; transform: scale(1); }
+    50%      { opacity: 0.8; transform: scale(1.08); }
+  }
+
+  .deco-flower.f1 { animation: flower-rotate 30s linear infinite; }
+  .deco-flower.f2 { animation: flower-rotate-rev 24s linear infinite reverse; }
+  .hero-visual::before { animation: halo-pulse 5s ease-in-out infinite; }
   @keyframes breathe {
     0%, 100% { box-shadow: 0 6px 18px rgba(209,122,149,0.32), 0 0 0 0 rgba(209,122,149,0.5); }
     50%      { box-shadow: 0 14px 30px rgba(209,122,149,0.42), 0 0 0 18px rgba(209,122,149,0.0); }
@@ -441,8 +526,10 @@
   .price-card:hover { box-shadow: 0 14px 36px rgba(180,90,110,0.14); }
 
   @media (prefers-reduced-motion: reduce) {
-    .hero-visual, .hero .btn, .hero h1 em, .petal, .hero-visual::after { animation: none !important; }
+    .hero-visual, .hero .btn, .hero h1 em, .petal, .hero-visual::after,
+    .deco-flower, .hero-visual::before { animation: none !important; }
     .petals { display: none; }
+    body::before { transition: none; }
     .hero h1 em { -webkit-text-fill-color: var(--sage-dark); color: var(--sage-dark); background: none; }
     .reveal { opacity: 1; transform: none; transition: none; }
   }
@@ -478,7 +565,7 @@
   <div class="container">
     <div class="hero-grid">
       <div>
-        <span class="eyebrow">Access Bars · 32 bodov pokoja</span>
+      <span class="eyebrow">Access Bars · 32 bodov pokoja</span>
         <h1>Cesta do sveta <em>relaxu</em>, ktorý cítiš ešte dlho potom.</h1>
         <p class="lede">Jemná masáž 32 bodov na hlave. 60 až 90 minút ležania, ticha a dotyku, ktoré uvoľnia myseľ keď si ju roky nedokázal/a vypnúť.</p>
         <div class="hero-ctas">
@@ -486,7 +573,30 @@
           <a href="#access-bars" class="btn btn-ghost">Zisti, čo je Access Bars</a>
         </div>
       </div>
-      <div class="hero-visual" aria-hidden="true"></div>
+      <div class="hero-visual" aria-hidden="true">
+        <svg class="deco-flower f1" viewBox="0 0 100 100" aria-hidden="true">
+          <g fill="#D17A95" opacity="0.85">
+            <ellipse cx="50" cy="22" rx="9" ry="20"/>
+            <ellipse cx="50" cy="78" rx="9" ry="20"/>
+            <ellipse cx="22" cy="50" rx="20" ry="9"/>
+            <ellipse cx="78" cy="50" rx="20" ry="9"/>
+            <ellipse cx="30" cy="30" rx="9" ry="18" transform="rotate(-45 30 30)"/>
+            <ellipse cx="70" cy="30" rx="9" ry="18" transform="rotate(45 70 30)"/>
+            <ellipse cx="30" cy="70" rx="9" ry="18" transform="rotate(45 30 70)"/>
+            <ellipse cx="70" cy="70" rx="9" ry="18" transform="rotate(-45 70 70)"/>
+          </g>
+          <circle cx="50" cy="50" r="8" fill="#F2BCA5"/>
+        </svg>
+        <svg class="deco-flower f2" viewBox="0 0 100 100" aria-hidden="true">
+          <g fill="#F2BCA5" opacity="0.9">
+            <ellipse cx="50" cy="25" rx="8" ry="18"/>
+            <ellipse cx="50" cy="75" rx="8" ry="18"/>
+            <ellipse cx="25" cy="50" rx="18" ry="8"/>
+            <ellipse cx="75" cy="50" rx="18" ry="8"/>
+          </g>
+          <circle cx="50" cy="50" r="7" fill="#D17A95"/>
+        </svg>
+      </div>
     </div>
   </div>
 </header>
@@ -494,6 +604,7 @@
 <section class="alt">
   <div class="container">
     <div class="section-head">
+      <div class="ornament">✿ ✿ ✿</div>
       <span class="eyebrow">Prečo to ľudia skúšajú</span>
       <h2>Tri dôvody, prečo sa klienti vracajú</h2>
     </div>
@@ -521,7 +632,8 @@
   <div class="container">
     <div class="ab-grid">
       <div>
-        <span class="eyebrow">Čo je Access Bars</span>
+        <div class="ornament">✿ ✿ ✿</div>
+      <span class="eyebrow">Čo je Access Bars</span>
         <h2>32 jemných dotykov, ktoré urobia v hlave priestor.</h2>
         <p>Access Bars® je technika, kde sa zľahka dotýkam 32 konkrétnych bodov na tvojej hlave. Žiadny tlak, žiadne masírovanie. Len ľahké držanie prstami, asi tak, ako keby si si položil/a dlaň na čelo.</p>
         <p>Sedenie trvá 60 až 90 minút. Si oblečený/á, prikrytý/á dekou, v polotme. Mnoho ľudí počas neho zaspí — to je v poriadku. Účinok prichádza sám.</p>
@@ -542,6 +654,7 @@
 <section id="cennik" class="alt">
   <div class="container">
     <div class="section-head">
+      <div class="ornament">✿ ✿ ✿</div>
       <span class="eyebrow">Cenník</span>
       <h2>Vyber si dĺžku, ktorá sedí dnešnému dňu.</h2>
       <p class="muted">Platba v hotovosti alebo prevodom vopred. Storno bezplatne 24 hodín pred sedením.</p>
@@ -593,6 +706,7 @@
 <section id="blog">
   <div class="container">
     <div class="section-head">
+      <div class="ornament">✿ ✿ ✿</div>
       <span class="eyebrow">Z blogu</span>
       <h2>Pre tých, ktorí najprv chcú rozumieť.</h2>
     </div>
@@ -674,6 +788,17 @@
 </footer>
 
 <script>
+  // Scroll progress bar — beží VŽDY (ignoruje reduce-motion, lebo je to indikátor nie animácia)
+  (function () {
+    function updateProgress() {
+      var h = document.documentElement;
+      var scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+      document.body.style.setProperty('--scroll', scrolled + '%');
+    }
+    updateProgress();
+    window.addEventListener('scroll', updateProgress, { passive: true });
+  })();
+
   (function () {
     var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReduced) return;
