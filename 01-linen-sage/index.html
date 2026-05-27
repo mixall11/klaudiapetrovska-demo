@@ -419,10 +419,12 @@
     z-index: 0;
     transition: transform .3s ease;
   }
-  .flower-decor.sm { width: 40px; height: 40px; }
-  .flower-decor.md { width: 64px; height: 64px; }
-  .flower-decor.lg { width: 96px; height: 96px; }
-  .flower-decor.xl { width: 130px; height: 130px; }
+  .flower-decor.xs  { width: 24px;  height: 24px; }
+  .flower-decor.sm  { width: 40px;  height: 40px; }
+  .flower-decor.md  { width: 64px;  height: 64px; }
+  .flower-decor.lg  { width: 96px;  height: 96px; }
+  .flower-decor.xl  { width: 130px; height: 130px; }
+  .flower-decor.xxl { width: 180px; height: 180px; }
 
   @keyframes flower-spin-slow {
     from { transform: rotate(var(--r, 0deg)); }
@@ -519,21 +521,22 @@
     top: -10vh;
     width: 14px;
     height: 14px;
-    background: radial-gradient(circle at 30% 30%, var(--sage) 0%, var(--sage-dark) 80%);
-    border-radius: 50% 0 50% 50%;
+    background: radial-gradient(circle at 30% 30%, #FFFFFF 0%, var(--sage) 90%);
+    border-radius: 50%;
     opacity: 0;
     animation: petal-fall 14s linear infinite;
     filter: blur(0.3px);
   }
+  .petal.pink { background: radial-gradient(circle at 30% 30%, var(--sage) 0%, var(--sage-dark) 90%); }
   .petal:nth-child(1)  { left:  8%; width: 12px; height: 12px; animation-delay: 0s;    --drift:  30px; }
-  .petal:nth-child(2)  { left: 22%; width: 16px; height: 16px; animation-delay: -3s;   --drift: -50px; background: radial-gradient(circle at 30% 30%, var(--terracotta) 0%, #C97070 80%); }
+  .petal:nth-child(2)  { left: 22%; width: 16px; height: 16px; animation-delay: -3s;   --drift: -50px; }
   .petal:nth-child(3)  { left: 38%; width: 10px; height: 10px; animation-delay: -6s;   --drift:  20px; }
-  .petal:nth-child(4)  { left: 54%; width: 18px; height: 18px; animation-delay: -9s;   --drift: -40px; background: radial-gradient(circle at 30% 30%, #F2BCA5 0%, var(--sage-dark) 80%); }
+  .petal:nth-child(4)  { left: 54%; width: 18px; height: 18px; animation-delay: -9s;   --drift: -40px; }
   .petal:nth-child(5)  { left: 70%; width: 13px; height: 13px; animation-delay: -1.5s; --drift:  60px; }
-  .petal:nth-child(6)  { left: 86%; width: 11px; height: 11px; animation-delay: -4.5s; --drift: -25px; background: radial-gradient(circle at 30% 30%, var(--terracotta) 0%, var(--sage-dark) 80%); }
+  .petal:nth-child(6)  { left: 86%; width: 11px; height: 11px; animation-delay: -4.5s; --drift: -25px; }
   .petal:nth-child(7)  { left: 15%; width: 9px;  height: 9px;  animation-delay: -7.5s; --drift:  40px; }
   .petal:nth-child(8)  { left: 62%; width: 15px; height: 15px; animation-delay: -10.5s; --drift: -35px; }
-  .petal:nth-child(9)  { left: 45%; width: 8px;  height: 8px;  animation-delay: -12s;  --drift:  50px; background: radial-gradient(circle at 30% 30%, #F2BCA5 0%, #C97070 80%); }
+  .petal:nth-child(9)  { left: 45%; width: 8px;  height: 8px;  animation-delay: -12s;  --drift:  50px; }
 
   .hero .container { position: relative; z-index: 1; }
 
@@ -572,15 +575,6 @@
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <symbol id="ico-rose" viewBox="0 0 60 60">
-      <g fill="#D17A95">
-        <path d="M30 18 C22 18, 18 24, 22 30 C18 32, 18 38, 24 40 C22 46, 28 50, 32 46 C36 50, 42 46, 40 40 C46 38, 46 32, 42 30 C46 24, 42 18, 34 18 C32 16, 28 16, 30 18Z"/>
-      </g>
-      <g fill="#EBB4C2">
-        <path d="M30 24 C26 24, 24 28, 26 30 C24 32, 26 34, 28 34 C30 36, 32 34, 32 32 C34 32, 34 28, 32 26 C30 24, 30 24, 30 24Z"/>
-      </g>
-      <circle cx="30" cy="30" r="3" fill="#F2BCA5"/>
-    </symbol>
     <symbol id="ico-daisy" viewBox="0 0 60 60">
       <g fill="#FFFFFF" stroke="#EBB4C2" stroke-width="0.8">
         <ellipse cx="30" cy="14" rx="5" ry="11"/>
@@ -592,27 +586,20 @@
         <ellipse cx="19" cy="41" rx="5" ry="11" transform="rotate(45 19 41)"/>
         <ellipse cx="41" cy="41" rx="5" ry="11" transform="rotate(-45 41 41)"/>
       </g>
-      <circle cx="30" cy="30" r="6" fill="#F2BCA5"/>
-      <circle cx="30" cy="30" r="3" fill="#D17A95"/>
+      <circle cx="30" cy="30" r="5" fill="#D17A95"/>
     </symbol>
-    <symbol id="ico-bloom" viewBox="0 0 60 60">
-      <g fill="#F2BCA5">
-        <ellipse cx="30" cy="18" rx="7" ry="14"/>
-        <ellipse cx="30" cy="42" rx="7" ry="14"/>
-        <ellipse cx="18" cy="30" rx="14" ry="7"/>
-        <ellipse cx="42" cy="30" rx="14" ry="7"/>
+    <symbol id="ico-daisy-pink" viewBox="0 0 60 60">
+      <g fill="#EBB4C2" stroke="#D17A95" stroke-width="0.8">
+        <ellipse cx="30" cy="14" rx="5" ry="11"/>
+        <ellipse cx="30" cy="46" rx="5" ry="11"/>
+        <ellipse cx="14" cy="30" rx="11" ry="5"/>
+        <ellipse cx="46" cy="30" rx="11" ry="5"/>
+        <ellipse cx="19" cy="19" rx="5" ry="11" transform="rotate(-45 19 19)"/>
+        <ellipse cx="41" cy="19" rx="5" ry="11" transform="rotate(45 41 19)"/>
+        <ellipse cx="19" cy="41" rx="5" ry="11" transform="rotate(45 19 41)"/>
+        <ellipse cx="41" cy="41" rx="5" ry="11" transform="rotate(-45 41 41)"/>
       </g>
-      <circle cx="30" cy="30" r="6" fill="#D17A95"/>
-    </symbol>
-    <symbol id="ico-bud" viewBox="0 0 60 60">
-      <g fill="#EBB4C2">
-        <circle cx="30" cy="30" r="14"/>
-      </g>
-      <g fill="#D17A95" opacity="0.7">
-        <path d="M30 18 Q34 22, 30 30 Q26 22, 30 18Z"/>
-        <path d="M42 30 Q38 34, 30 30 Q38 26, 42 30Z"/>
-      </g>
-      <circle cx="30" cy="30" r="4" fill="#F2BCA5"/>
+      <circle cx="30" cy="30" r="5" fill="#FFFFFF"/>
     </symbol>
   </defs>
 </svg>
@@ -632,20 +619,24 @@
 
 <header class="hero">
   <svg class="flower-decor xl spin" style="top:6%;left:3%; --r:0deg"><use href="#ico-daisy"/></svg>
-  <svg class="flower-decor md sway" style="top:18%;left:42%; --r:15deg; opacity:.35"><use href="#ico-bud"/></svg>
-  <svg class="flower-decor lg spin-fast" style="bottom:8%;right:6%; --r:30deg"><use href="#ico-rose"/></svg>
-  <svg class="flower-decor sm sway-slow" style="top:35%;right:38%; --r:-20deg; opacity:.45"><use href="#ico-bloom"/></svg>
+  <svg class="flower-decor md sway" style="top:18%;left:42%; --r:15deg; opacity:.35"><use href="#ico-daisy"/></svg>
+  <svg class="flower-decor lg spin-fast" style="bottom:8%;right:6%; --r:30deg"><use href="#ico-daisy-pink"/></svg>
+  <svg class="flower-decor sm sway-slow" style="top:35%;right:38%; --r:-20deg; opacity:.45"><use href="#ico-daisy"/></svg>
   <svg class="flower-decor md spin" style="bottom:14%;left:32%; --r:-45deg; opacity:.4"><use href="#ico-daisy"/></svg>
+  <svg class="flower-decor xxl spin" style="top:-4%;right:34%; --r:0deg; opacity:.18"><use href="#ico-daisy"/></svg>
+  <svg class="flower-decor xs sway" style="top:52%;left:14%; --r:25deg; opacity:.6"><use href="#ico-daisy-pink"/></svg>
+  <svg class="flower-decor xs sway-slow" style="top:42%;left:55%; --r:-30deg; opacity:.55"><use href="#ico-daisy"/></svg>
+  <svg class="flower-decor xs spin-fast" style="bottom:22%;right:42%; --r:60deg; opacity:.5"><use href="#ico-daisy-pink"/></svg>
   <div class="petals" aria-hidden="true">
     <span class="petal"></span>
+    <span class="petal pink"></span>
+    <span class="petal"></span>
+    <span class="petal pink"></span>
+    <span class="petal"></span>
+    <span class="petal pink"></span>
     <span class="petal"></span>
     <span class="petal"></span>
-    <span class="petal"></span>
-    <span class="petal"></span>
-    <span class="petal"></span>
-    <span class="petal"></span>
-    <span class="petal"></span>
-    <span class="petal"></span>
+    <span class="petal pink"></span>
   </div>
   <div class="container">
     <div class="hero-grid">
@@ -659,38 +650,21 @@
         </div>
       </div>
       <div class="hero-visual" aria-hidden="true">
-        <svg class="deco-flower f1" viewBox="0 0 100 100" aria-hidden="true">
-          <g fill="#D17A95" opacity="0.85">
-            <ellipse cx="50" cy="22" rx="9" ry="20"/>
-            <ellipse cx="50" cy="78" rx="9" ry="20"/>
-            <ellipse cx="22" cy="50" rx="20" ry="9"/>
-            <ellipse cx="78" cy="50" rx="20" ry="9"/>
-            <ellipse cx="30" cy="30" rx="9" ry="18" transform="rotate(-45 30 30)"/>
-            <ellipse cx="70" cy="30" rx="9" ry="18" transform="rotate(45 70 30)"/>
-            <ellipse cx="30" cy="70" rx="9" ry="18" transform="rotate(45 30 70)"/>
-            <ellipse cx="70" cy="70" rx="9" ry="18" transform="rotate(-45 70 70)"/>
-          </g>
-          <circle cx="50" cy="50" r="8" fill="#F2BCA5"/>
-        </svg>
-        <svg class="deco-flower f2" viewBox="0 0 100 100" aria-hidden="true">
-          <g fill="#F2BCA5" opacity="0.9">
-            <ellipse cx="50" cy="25" rx="8" ry="18"/>
-            <ellipse cx="50" cy="75" rx="8" ry="18"/>
-            <ellipse cx="25" cy="50" rx="18" ry="8"/>
-            <ellipse cx="75" cy="50" rx="18" ry="8"/>
-          </g>
-          <circle cx="50" cy="50" r="7" fill="#D17A95"/>
-        </svg>
+        <svg class="deco-flower f1" viewBox="0 0 60 60" aria-hidden="true"><use href="#ico-daisy"/></svg>
+        <svg class="deco-flower f2" viewBox="0 0 60 60" aria-hidden="true"><use href="#ico-daisy-pink"/></svg>
       </div>
     </div>
   </div>
 </header>
 
 <section class="alt">
-  <svg class="flower-decor lg spin" style="top:4%;left:4%; --r:0deg; opacity:.45"><use href="#ico-rose"/></svg>
+  <svg class="flower-decor lg spin" style="top:4%;left:4%; --r:0deg; opacity:.45"><use href="#ico-daisy-pink"/></svg>
   <svg class="flower-decor md sway" style="top:12%;right:7%; --r:25deg"><use href="#ico-daisy"/></svg>
-  <svg class="flower-decor sm spin-fast" style="bottom:8%;left:10%; --r:-15deg"><use href="#ico-bud"/></svg>
-  <svg class="flower-decor md sway-slow" style="bottom:14%;right:14%; --r:40deg; opacity:.4"><use href="#ico-bloom"/></svg>
+  <svg class="flower-decor sm spin-fast" style="bottom:8%;left:10%; --r:-15deg"><use href="#ico-daisy"/></svg>
+  <svg class="flower-decor md sway-slow" style="bottom:14%;right:14%; --r:40deg; opacity:.4"><use href="#ico-daisy-pink"/></svg>
+  <svg class="flower-decor xxl spin" style="top:55%;right:-3%; --r:0deg; opacity:.18"><use href="#ico-daisy"/></svg>
+  <svg class="flower-decor xs sway" style="top:24%;left:26%; --r:15deg; opacity:.55"><use href="#ico-daisy-pink"/></svg>
+  <svg class="flower-decor xs spin-fast" style="bottom:30%;right:32%; --r:-20deg; opacity:.55"><use href="#ico-daisy"/></svg>
   <div class="container">
     <div class="section-head">
       <div class="ornament">✿ ✿ ✿</div>
@@ -719,9 +693,12 @@
 
 <section id="access-bars">
   <svg class="flower-decor xl sway-slow" style="top:8%;right:3%; --r:-20deg; opacity:.4"><use href="#ico-daisy"/></svg>
-  <svg class="flower-decor md spin" style="top:30%;left:5%; --r:10deg"><use href="#ico-rose"/></svg>
-  <svg class="flower-decor sm sway" style="bottom:10%;right:18%; --r:50deg"><use href="#ico-bud"/></svg>
-  <svg class="flower-decor lg spin-fast" style="bottom:6%;left:3%; --r:-30deg; opacity:.35"><use href="#ico-bloom"/></svg>
+  <svg class="flower-decor md spin" style="top:30%;left:5%; --r:10deg"><use href="#ico-daisy"/></svg>
+  <svg class="flower-decor sm sway" style="bottom:10%;right:18%; --r:50deg"><use href="#ico-daisy-pink"/></svg>
+  <svg class="flower-decor lg spin-fast" style="bottom:6%;left:3%; --r:-30deg; opacity:.35"><use href="#ico-daisy"/></svg>
+  <svg class="flower-decor xxl spin" style="bottom:-5%;right:38%; --r:0deg; opacity:.16"><use href="#ico-daisy-pink"/></svg>
+  <svg class="flower-decor xs sway-slow" style="top:18%;left:42%; --r:-10deg; opacity:.6"><use href="#ico-daisy"/></svg>
+  <svg class="flower-decor xs sway" style="top:48%;right:28%; --r:35deg; opacity:.55"><use href="#ico-daisy-pink"/></svg>
   <div class="container">
     <div class="ab-grid">
       <div>
@@ -745,10 +722,13 @@
 </section>
 
 <section id="cennik" class="alt">
-  <svg class="flower-decor lg spin" style="top:6%;right:5%; --r:15deg"><use href="#ico-rose"/></svg>
+  <svg class="flower-decor lg spin" style="top:6%;right:5%; --r:15deg"><use href="#ico-daisy-pink"/></svg>
   <svg class="flower-decor md sway" style="top:42%;left:4%; --r:-25deg; opacity:.4"><use href="#ico-daisy"/></svg>
-  <svg class="flower-decor sm spin-fast" style="bottom:18%;right:12%; --r:60deg"><use href="#ico-bud"/></svg>
-  <svg class="flower-decor md sway-slow" style="bottom:8%;left:14%; --r:30deg; opacity:.45"><use href="#ico-bloom"/></svg>
+  <svg class="flower-decor sm spin-fast" style="bottom:18%;right:12%; --r:60deg"><use href="#ico-daisy"/></svg>
+  <svg class="flower-decor md sway-slow" style="bottom:8%;left:14%; --r:30deg; opacity:.45"><use href="#ico-daisy-pink"/></svg>
+  <svg class="flower-decor xxl spin" style="top:-6%;left:-4%; --r:0deg; opacity:.18"><use href="#ico-daisy"/></svg>
+  <svg class="flower-decor xs sway-slow" style="top:30%;right:36%; --r:20deg; opacity:.55"><use href="#ico-daisy-pink"/></svg>
+  <svg class="flower-decor xs spin-fast" style="bottom:32%;left:38%; --r:-40deg; opacity:.6"><use href="#ico-daisy"/></svg>
   <div class="container">
     <div class="section-head">
       <div class="ornament">✿ ✿ ✿</div>
@@ -802,8 +782,11 @@
 
 <section id="blog">
   <svg class="flower-decor md spin" style="top:10%;left:6%; --r:-15deg"><use href="#ico-daisy"/></svg>
-  <svg class="flower-decor sm sway" style="top:5%;right:10%; --r:35deg; opacity:.45"><use href="#ico-bud"/></svg>
-  <svg class="flower-decor lg sway-slow" style="bottom:12%;right:4%; --r:-40deg; opacity:.4"><use href="#ico-rose"/></svg>
+  <svg class="flower-decor sm sway" style="top:5%;right:10%; --r:35deg; opacity:.45"><use href="#ico-daisy"/></svg>
+  <svg class="flower-decor lg sway-slow" style="bottom:12%;right:4%; --r:-40deg; opacity:.4"><use href="#ico-daisy-pink"/></svg>
+  <svg class="flower-decor xxl spin" style="bottom:-4%;left:36%; --r:0deg; opacity:.16"><use href="#ico-daisy"/></svg>
+  <svg class="flower-decor xs sway" style="top:38%;left:42%; --r:10deg; opacity:.55"><use href="#ico-daisy-pink"/></svg>
+  <svg class="flower-decor xs sway-slow" style="bottom:24%;right:36%; --r:-25deg; opacity:.6"><use href="#ico-daisy"/></svg>
   <div class="container">
     <div class="section-head">
       <div class="ornament">✿ ✿ ✿</div>
@@ -840,10 +823,13 @@
 </section>
 
 <section id="kontakt" class="alt">
-  <svg class="flower-decor xl spin" style="top:8%;left:3%; --r:0deg; opacity:.35"><use href="#ico-rose"/></svg>
+  <svg class="flower-decor xl spin" style="top:8%;left:3%; --r:0deg; opacity:.35"><use href="#ico-daisy"/></svg>
   <svg class="flower-decor md sway" style="top:14%;right:5%; --r:20deg"><use href="#ico-daisy"/></svg>
-  <svg class="flower-decor sm spin-fast" style="bottom:8%;left:30%; --r:-30deg; opacity:.5"><use href="#ico-bloom"/></svg>
-  <svg class="flower-decor md sway-slow" style="bottom:14%;right:8%; --r:45deg"><use href="#ico-bud"/></svg>
+  <svg class="flower-decor sm spin-fast" style="bottom:8%;left:30%; --r:-30deg; opacity:.5"><use href="#ico-daisy-pink"/></svg>
+  <svg class="flower-decor md sway-slow" style="bottom:14%;right:8%; --r:45deg"><use href="#ico-daisy"/></svg>
+  <svg class="flower-decor xxl spin" style="top:30%;right:-5%; --r:0deg; opacity:.18"><use href="#ico-daisy-pink"/></svg>
+  <svg class="flower-decor xs sway-slow" style="top:25%;left:28%; --r:45deg; opacity:.6"><use href="#ico-daisy"/></svg>
+  <svg class="flower-decor xs sway" style="bottom:30%;right:36%; --r:-15deg; opacity:.55"><use href="#ico-daisy-pink"/></svg>
   <div class="container">
     <div class="cta-banner">
       <span class="eyebrow" style="color: var(--sage);">Začnime jednoducho</span>
